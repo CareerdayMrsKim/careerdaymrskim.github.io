@@ -7,9 +7,9 @@
 </head>
 <body>
 
-  <h1>Mrs. Kim's 1st Grade Career Day</h1>
+  <h1>Career Day</h1>
 
-  <textarea id="careerInput" rows="6" placeholder="Type your jobs here, one per line..."></textarea>
+  <input type="text" id="studentName" placeholder="Enter your name...">
 
   <br><br>
 
@@ -18,21 +18,68 @@
 
   <p id="output"></p>
 
+  <hr>
+
+  <h2>Who are you?</h2>
+
+  <button onclick="pickRandom('pokemon')">Which Pokémon are you?</button>
+  <button onclick="pickRandom('princess')">Which Disney Princess are you?</button>
+
+  <div id="characterResult" style="margin-top: 1rem;">
+    <p id="characterName"></p>
+    <img id="characterImage" src="" alt="" style="display:none; width: 200px; border-radius: 8px;">
+  </div>
+
   <script>
+    const descriptions = [
+      "awesome", "brilliant", "amazing", "wonderful", "fantastic",
+      "beautiful", "smart", "incredible", "superstar", "unstoppable"
+    ];
+
+    const pokemon = [
+      { name: "Pikachu",    image: "https://img.pokemondb.net/artwork/large/pikachu.jpg" },
+      { name: "Eevee",      image: "https://img.pokemondb.net/artwork/large/eevee.jpg" },
+      { name: "Jigglypuff", image: "https://img.pokemondb.net/artwork/large/jigglypuff.jpg" },
+      { name: "Bulbasaur",  image: "https://img.pokemondb.net/artwork/large/bulbasaur.jpg" },
+      { name: "Charmander", image: "https://img.pokemondb.net/artwork/large/charmander.jpg" },
+      { name: "Squirtle",   image: "https://img.pokemondb.net/artwork/large/squirtle.jpg" },
+      { name: "Mewtwo",     image: "https://img.pokemondb.net/artwork/large/mewtwo.jpg" },
+      { name: "Snorlax",    image: "https://img.pokemondb.net/artwork/large/snorlax.jpg" },
+    ];
+
+    const princesses = [
+      { name: "Moana",      image: "https://upload.wikimedia.org/wikipedia/en/5/5d/Moana_%28Disney_character%29.png" },
+      { name: "Mulan",      image: "https://upload.wikimedia.org/wikipedia/en/0/00/Mulan_%28Disney_character%29.png" },
+      { name: "Tiana",      image: "https://upload.wikimedia.org/wikipedia/en/4/4f/Tiana-Disney.png" },
+      { name: "Rapunzel",   image: "https://upload.wikimedia.org/wikipedia/en/a/a7/Rapunzel_disney_tangled.png" },
+      { name: "Merida",     image: "https://upload.wikimedia.org/wikipedia/en/8/8f/Merida_%28Brave%29.png" },
+      { name: "Cinderella", image: "https://upload.wikimedia.org/wikipedia/en/3/35/Cinderella-2015-film.png" },
+    ];
+
     function handleSubmit() {
-      const val = document.getElementById('careerInput').value.trim();
+      const name = document.getElementById('studentName').value.trim();
       const out = document.getElementById('output');
-      if (!val) {
-        out.textContent = 'Please enter something first!';
+      if (!name) {
+        out.textContent = 'Please enter your name first!';
         return;
       }
-      const lines = val.split('\n').filter(l => l.trim());
-      out.textContent = lines.length + ' item(s) submitted!';
+      const word = descriptions[Math.floor(Math.random() * descriptions.length)];
+      out.textContent = `Hey ${name} you are ${word}!!!`;
     }
 
     function handleClear() {
-      document.getElementById('careerInput').value = '';
+      document.getElementById('studentName').value = '';
       document.getElementById('output').textContent = '';
+    }
+
+    function pickRandom(type) {
+      const list = type === 'pokemon' ? pokemon : princesses;
+      const pick = list[Math.floor(Math.random() * list.length)];
+      document.getElementById('characterName').textContent = `You are ${pick.name}!`;
+      const img = document.getElementById('characterImage');
+      img.src = pick.image;
+      img.alt = pick.name;
+      img.style.display = 'block';
     }
   </script>
 
