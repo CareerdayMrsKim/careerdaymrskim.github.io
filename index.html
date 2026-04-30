@@ -28,25 +28,25 @@
 
   <script>
     const pokemon = [
-      { name: "Pikachu",    image: "assets/pokemon/pikachu.png",    compliment: "PLACEHOLDER: Pikachu compliment" },
-      { name: "Eevee",      image: "assets/pokemon/eevee.png",      compliment: "PLACEHOLDER: Eevee compliment" },
-      { name: "Jigglypuff", image: "assets/pokemon/jigglypuff.png", compliment: "PLACEHOLDER: Jigglypuff compliment" },
-      { name: "Bulbasaur",  image: "assets/pokemon/bulbasaur.png",  compliment: "PLACEHOLDER: Bulbasaur compliment" },
-      { name: "Charmander", image: "assets/pokemon/charmander.png", compliment: "PLACEHOLDER: Charmander compliment" },
-      { name: "Squirtle",   image: "assets/pokemon/squirtle.png",   compliment: "PLACEHOLDER: Squirtle compliment" },
-      { name: "Mewtwo",     image: "assets/pokemon/mewtwo.png",     compliment: "PLACEHOLDER: Mewtwo compliment" },
-      { name: "Snorlax",    image: "assets/pokemon/snorlax.png",    compliment: "PLACEHOLDER: Snorlax compliment" },
+      { name: "Pikachu",    image: "assets/pokemon/pikachu.png",    compliment: "You're shockingly awesome — just like Pikachu's Thunderbolt" },
+      { name: "Eevee",      image: "assets/pokemon/eevee.png",      compliment: "Eevee can evolve into 8 different Pokemon and just like Eevee, you can be anything you want to be!" },
+      { name: "Jigglypuff", image: "assets/pokemon/jigglypuff.png", compliment: "Just like Jigglypuff, you have a song in your heart that makes everything more magical" },
+      { name: "Bulbasaur",  image: "assets/pokemon/bulbasaur.png",  compliment: "Just like Bulbasaur soaks up sunshine to grow, you soak up everything you learn and get more amazing every day" },
+      { name: "Charmander", image: "assets/pokemon/charmander.png", compliment: "Just like Charmander's tail flame, your spark is always burning bright and nothing can ever put it out!" },
+      { name: "Squirtle",   image: "assets/pokemon/squirtle.png",   compliment: "Just like Squirtle blasts away every obstacle with its water cannon, you tackle every challenge that comes your way with everything you've got!" },
+      { name: "Mewtwo",     image: "assets/pokemon/mewtwo.png",     compliment: "Mewtwo has a power inside that nobody fully understands yet — and you have that same extraordinary gift just waiting to be discovered!" },
+      { name: "Snorlax",    image: "assets/pokemon/snorlax.png",    compliment: "Just like Snorlax, you might look relaxed and easygoing but everyone knows when it's your time you are absolutely unstoppable!" },
     ];
 
     const princesses = [
-      { name: "Moana",      image: "assets/princesses/moana.png",      compliment: "PLACEHOLDER: Moana compliment" },
+      { name: "Moana",      image: "assets/princesses/moana.png",      compliment: "Moana never stopped believing in herself even when everyone around her said she couldn't — and that same unstoppable belief lives in you!" },
       { name: "Mulan",      image: "assets/princesses/mulan.png",      compliment: "PLACEHOLDER: Mulan compliment" },
       { name: "Tiana",      image: "assets/princesses/tiana.png",      compliment: "PLACEHOLDER: Tiana compliment" },
       { name: "Rapunzel",   image: "assets/princesses/rapunzel.png",   compliment: "PLACEHOLDER: Rapunzel compliment" },
       { name: "Merida",     image: "assets/princesses/merida.png",     compliment: "PLACEHOLDER: Merida compliment" },
       { name: "Cinderella", image: "assets/princesses/cinderella.png", compliment: "PLACEHOLDER: Cinderella compliment" },
-      { name: "Ariel",      image: "assets/princesses/Ariel.png",      compliment: "PLACEHOLDER: Ariel compliment" },
-      { name: "Belle",       image: "assets/princesses/Belle.png",     compliment: "PLACEHOLDER: Belle compliment" },
+      { name: "Ariel",      image: "assets/princesses/ariel.png",      compliment: "PLACEHOLDER: Ariel compliment" },
+      { name: "Belle",       image: "assets/princesses/belle.png",     compliment: "PLACEHOLDER: Belle compliment" },
     ];
 
     function handleSubmit() {
@@ -66,8 +66,7 @@
       const name = document.getElementById('studentName').value.trim();
       const list = type === 'pokemon' ? pokemon : princesses;
       const pick = list[Math.floor(Math.random() * list.length)];
-      document.getElementById('greeting').textContent = `Hey ${name}!`;
-      document.getElementById('charName').textContent = `You are ${pick.name}!`;
+      document.getElementById('greeting').textContent = `Oh hello there ${name}!`;
       document.getElementById('charImage').src = pick.image;
       document.getElementById('charImage').alt = pick.name;
       document.getElementById('compliment').textContent = pick.compliment;
