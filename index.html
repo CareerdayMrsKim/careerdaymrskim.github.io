@@ -6,88 +6,68 @@
   <title>Career Day</title>
 </head>
 <body>
+  <h1>Mrs. Kim's Career Day</h1>
+  <p>1st Grade — Enter your name to get started!</p>
 
-  <h1>Career Day</h1>
-
-  <input type="text" id="studentName" placeholder="Enter your name...">
-
-  <br><br>
-
-  <button onclick="handleSubmit()">Submit</button>
+  <input type="text" id="studentName" placeholder="Your name..." />
+  <button onclick="handleSubmit()">Go!</button>
   <button onclick="handleClear()">Clear</button>
 
-  <div id="choiceSection" style="display:none; margin-top: 1rem;">
-    <h2>Who are you?</h2>
-    <button onclick="pickRandom('pokemon')">Which Pokémon are you?</button>
-    <button onclick="pickRandom('princess')">Which Disney Princess are you?</button>
+  <div id="choiceSection" style="display:none;">
+    <p>What do you love more?</p>
+    <button onclick="pickRandom('pokemon')">Pokemon</button>
+    <button onclick="pickRandom('princess')">Disney Princess</button>
   </div>
 
-  <div id="characterResult" style="margin-top: 1rem;">
-    <p id="output"></p>
-    <p id="characterName"></p>
-    <img id="characterImage" src="" alt="" style="display:none; width: 200px; border-radius: 8px;">
+  <div id="resultCard" style="display:none;">
+    <p id="greeting"></p>
+    <p id="charName"></p>
+    <p id="compliment"></p>
   </div>
 
   <script>
-    const descriptions = [
-      "awesome", "brilliant", "amazing", "wonderful", "fantastic",
-      "beautiful", "smart", "incredible", "superstar", "unstoppable"
-    ];
-
     const pokemon = [
-      { name: "Pikachu",    image: "images/pokemon/pikachu.png" },
-      { name: "Eevee",      image: "images/pokemon/eevee.png" },
-      { name: "Jigglypuff", image: "images/pokemon/jigglypuff.png" },
-      { name: "Bulbasaur",  image: "images/pokemon/bulbasaur.png" },
-      { name: "Charmander", image: "images/pokemon/charmander.png" },
-      { name: "Squirtle",   image: "images/pokemon/squirtle.png" },
-      { name: "Mewtwo",     image: "images/pokemon/mewtwo.png" },
-      { name: "Snorlax",    image: "images/pokemon/snorlax.png" },
+      { name: "Pikachu",    emoji: "⚡", compliment: "PLACEHOLDER: Pikachu compliment" },
+      { name: "Eevee",      emoji: "🦊", compliment: "PLACEHOLDER: Eevee compliment" },
+      { name: "Jigglypuff", emoji: "🎵", compliment: "PLACEHOLDER: Jigglypuff compliment" },
+      { name: "Bulbasaur",  emoji: "🌿", compliment: "PLACEHOLDER: Bulbasaur compliment" },
+      { name: "Charmander", emoji: "🔥", compliment: "PLACEHOLDER: Charmander compliment" },
+      { name: "Squirtle",   emoji: "💧", compliment: "PLACEHOLDER: Squirtle compliment" },
+      { name: "Mewtwo",     emoji: "🔮", compliment: "PLACEHOLDER: Mewtwo compliment" },
+      { name: "Snorlax",    emoji: "😴", compliment: "PLACEHOLDER: Snorlax compliment" },
     ];
 
     const princesses = [
-      { name: "Moana",      image: "images/princesses/moana.png" },
-      { name: "Mulan",      image: "images/princesses/mulan.png" },
-      { name: "Tiana",      image: "images/princesses/tiana.png" },
-      { name: "Rapunzel",   image: "images/princesses/rapunzel.png" },
-      { name: "Merida",     image: "images/princesses/merida.png" },
-      { name: "Cinderella", image: "images/princesses/cinderella.png" },
+      { name: "Moana",      emoji: "🌊", compliment: "PLACEHOLDER: Moana compliment" },
+      { name: "Mulan",      emoji: "🏮", compliment: "PLACEHOLDER: Mulan compliment" },
+      { name: "Tiana",      emoji: "🐸", compliment: "PLACEHOLDER: Tiana compliment" },
+      { name: "Rapunzel",   emoji: "🌸", compliment: "PLACEHOLDER: Rapunzel compliment" },
+      { name: "Merida",     emoji: "🏹", compliment: "PLACEHOLDER: Merida compliment" },
+      { name: "Cinderella", emoji: "👠", compliment: "PLACEHOLDER: Cinderella compliment" },
     ];
 
     function handleSubmit() {
       const name = document.getElementById('studentName').value.trim();
-      if (!name) {
-        alert('Please enter your name first!');
-        return;
-      }
+      if (!name) { alert('Please enter your name first!'); return; }
       document.getElementById('choiceSection').style.display = 'block';
-      document.getElementById('characterName').textContent = '';
-      document.getElementById('characterImage').style.display = 'none';
-      document.getElementById('output').textContent = '';
+      document.getElementById('resultCard').style.display = 'none';
     }
 
     function handleClear() {
       document.getElementById('studentName').value = '';
-      document.getElementById('output').textContent = '';
       document.getElementById('choiceSection').style.display = 'none';
-      document.getElementById('characterName').textContent = '';
-      document.getElementById('characterImage').style.display = 'none';
+      document.getElementById('resultCard').style.display = 'none';
     }
 
     function pickRandom(type) {
       const name = document.getElementById('studentName').value.trim();
       const list = type === 'pokemon' ? pokemon : princesses;
       const pick = list[Math.floor(Math.random() * list.length)];
-      const word = descriptions[Math.floor(Math.random() * descriptions.length)];
-
-      document.getElementById('output').textContent = `Hey ${name} you are ${word}!!!`;
-      document.getElementById('characterName').textContent = `You are ${pick.name}!`;
-      const img = document.getElementById('characterImage');
-      img.src = pick.image;
-      img.alt = pick.name;
-      img.style.display = 'block';
+      document.getElementById('greeting').textContent = `Hey ${name}!`;
+      document.getElementById('charName').textContent = `You are ${pick.name}! ${pick.emoji}`;
+      document.getElementById('compliment').textContent = pick.compliment;
+      document.getElementById('resultCard').style.display = 'block';
     }
   </script>
-
 </body>
 </html>
