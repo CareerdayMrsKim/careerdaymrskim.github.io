@@ -1,120 +1,122 @@
 
 * {
-box-sizing: border-box;
-margin: 0;
-padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
-background-color: #fff8f0;
-display: flex;
-justify-content: center;
-padding: 2rem 1rem;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+    background-color: #fff8f0;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
 }
 
 .container {
-width: 100%;
-max-width: 480px;
+    width: 100%;
+    max-width: 480px;
 }
 
 h1 {
-font-size: 1.4rem;
-color: #e84393;
-margin-bottom: 0.25rem;
+    font-size: 1.4rem;
+    color: #e84393;
+    margin-bottom: 0.25rem;
 }
 
 p.subtitle {
-font-size: 0.9rem;
-color: #888;
-margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 1.5rem;
 }
 
 .input-row {
-display: flex;
-gap: 8px;
-margin-bottom: 1.5rem;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1.5rem;
 }
 
 input[type="text"] {
-flex: 1;
-padding: 10px 14px;
-font-size: 1rem;
-border: 2px solid #f9c0d8;
-border-radius: 24px;
-outline: none;
-font-family: inherit;
+    flex: 1;
+    padding: 10px 14px;
+    font-size: 1rem;
+    border: 2px solid #f9c0d8;
+    border-radius: 24px;
+    outline: none;
+    font-family: inherit;
 }
 
 input[type="text"]:focus {
-border-color: #e84393;
+    border-color: #e84393;
 }
 
 button {
-padding: 10px 18px;
-font-size: 0.95rem;
-border: none;
-border-radius: 24px;
-background: #e84393;
-color: white;
-cursor: pointer;
-font-family: inherit;
+    padding: 10px 18px;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 24px;
+    background: #e84393;
+    color: white;
+    cursor: pointer;
+    font-family: inherit;
 }
 
 button:hover {
-background: #c9307a;
+    background: #c9307a;
 }
 
 #choiceSection {
-margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
 }
 
 #choiceSection p {
-font-size: 1rem;
-color: #555;
-margin-bottom: 10px;
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
 }
 
 #choiceSection button {
-margin-right: 8px;
-background: #ffdd57;
-color: #333;
+    margin-right: 8px;
+    background: #ffdd57;
+    color: #333;
 }
 
 #choiceSection button:hover {
-background: #f0c800;
+    background: #f0c800;
 }
 
 #resultCard {
-background: white;
-border: 2px solid #f9c0d8;
-border-radius: 16px;
-padding: 1.5rem;
-text-align: center;
+    background: white;
+    border: 2px solid #f9c0d8;
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: 1.5rem;
 }
 
 #resultCard #greeting {
-font-size: 1.3rem;
-font-weight: bold;
-color: #e84393;
-margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #e84393;
+    margin-bottom: 0.5rem;
 }
 
 #resultCard #charName {
-font-size: 1.1rem;
-color: #333;
-margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 1rem;
 }
 
 #resultCard #charImage {
-width: 180px;
-border-radius: 12px;
-margin-bottom: 1rem;
+    width: 180px;
+    border-radius: 12px;
+    margin-bottom: 1rem;
 }
 
 #resultCard #compliment {
-font-size: 0.95rem;
-color: #666;
-font-style: italic;
-line-height: 1.5;
+    font-size: 0.95rem;
+    color: #666;
+    font-style: italic;
+    line-height: 1.5;
 }
