@@ -6,72 +6,74 @@
   <title>Career Day</title>
 </head>
 <body>
-  <h1>Mrs. Kim's BEST 1st Grade's Career Day</h1>
-  <p>Let's enter your name to get started!</p>
+  <div class="container">
+    <h1>Mrs. Kim's BEST 1st Grade's Career Day</h1>
+    <p>Let's enter your name to get started!</p>
 
-  <input type="text" id="studentName" placeholder="Your name..." />
-  <button onclick="handleSubmit()">Let's Go!</button>
-  <button onclick="handleClear()">Clear</button>
+    <input type="text" id="studentName" placeholder="Your name..." />
+    <button onclick="handleSubmit()">Let's Go!</button>
+    <button onclick="handleClear()">Clear</button>
 
-  <div id="choiceSection" style="display:none;">
-    <p>What do you love more?</p>
-    <button onclick="pickRandom('pokemon')">Pokemon</button>
-    <button onclick="pickRandom('princess')">Disney Princess</button>
+    <div id="choiceSection" style="display:none;">
+      <p>What do you love more?</p>
+      <button onclick="pickRandom('pokemon')">Pokemon</button>
+      <button onclick="pickRandom('princess')">Disney Princess</button>
+    </div>
+
+    <div id="resultCard" style="display:none;">
+      <p id="greeting"></p>
+      <p id="charName"></p>
+      <img id="charImage" src="" alt="" style="width:200px;" />
+      <p id="compliment"></p>
+    </div>
+
+    <script>
+      const pokemon = [
+        { name: "Pikachu",    image: "assets/pokemon/pikachu.png",    compliment: "You're shockingly awesome — just like Pikachu's Thunderbolt" },
+        { name: "Eevee",      image: "assets/pokemon/eevee.png",      compliment: "Eevee can evolve into 8 different Pokemon and just like Eevee, you can be anything you want to be!" },
+        { name: "Jigglypuff", image: "assets/pokemon/jigglypuff.png", compliment: "Just like Jigglypuff, you have a song in your heart that makes everything more magical" },
+        { name: "Bulbasaur",  image: "assets/pokemon/bulbasaur.png",  compliment: "Just like Bulbasaur soaks up sunshine to grow, you soak up everything you learn and get more amazing every day" },
+        { name: "Charmander", image: "assets/pokemon/charmander.png", compliment: "Just like Charmander's tail flame, your spark is always burning bright and nothing can ever put it out!" },
+        { name: "Squirtle",   image: "assets/pokemon/squirtle.png",   compliment: "Just like Squirtle blasts away every obstacle with its water cannon, you tackle every challenge that comes your way with everything you've got!" },
+        { name: "Mewtwo",     image: "assets/pokemon/mewtwo.png",     compliment: "Mewtwo has a power inside that nobody fully understands yet — and you have that same extraordinary gift just waiting to be discovered!" },
+        { name: "Snorlax",    image: "assets/pokemon/snorlax.png",    compliment: "Just like Snorlax, you might look relaxed and easygoing but everyone knows when it's your time you are absolutely unstoppable!" },
+      ];
+
+      const princesses = [
+        { name: "Moana",      image: "assets/princesses/moana.png",      compliment: "Moana never stopped believing in herself even when everyone around her said she couldn't — and that same unstoppable belief lives in you!" },
+        { name: "Mulan",      image: "assets/princesses/mulan.png",      compliment: "Mulan didn't just save the day, she did it by being completely and unapologetically herself — and that's exactly your superpower too!" },
+        { name: "Tiana",      image: "assets/princesses/tiana.png",      compliment: "Just like Tiana, you have a gift that is so special and so uniquely yours that the whole world can't wait to see what you cook up next!" },
+        { name: "Rapunzel",   image: "assets/princesses/rapunzel.png",   compliment: "Rapunzel spent years dreaming about the world and the moment she stepped into it she was absolutely unstoppable — and that same curiosity and wonder lives in you!" },
+        { name: "Merida",     image: "assets/princesses/merida.png",     compliment: "Merida could hit a bullseye from a mile away because she never stopped practicing — and just like Merida, your determination is your greatest superpower!" },
+        { name: "Cinderella", image: "assets/princesses/cinderella.png", compliment: "Cinderella never stopped being kind even when things were tough — and that same beautiful generous heart is exactly what makes you so extraordinary!" },
+        { name: "Ariel",      image: "assets/princesses/ariel.png",      compliment: "Ariel collected treasures everywhere she went because she saw the magic in everything — and you have that same incredible gift of wonder!" },
+        { name: "Belle",       image: "assets/princesses/belle.png",     compliment: "Just like Belle, you have a curiosity and a love of stories that will take you to places more magical than you could ever imagine!" },
+      ];
+
+      function handleSubmit() {
+        const name = document.getElementById('studentName').value.trim();
+        if (!name) { alert('Please enter your name first!'); return; }
+        document.getElementById('choiceSection').style.display = 'block';
+        document.getElementById('resultCard').style.display = 'none';
+      }
+
+      function handleClear() {
+        document.getElementById('studentName').value = '';
+        document.getElementById('choiceSection').style.display = 'none';
+        document.getElementById('resultCard').style.display = 'none';
+      }
+
+      function pickRandom(type) {
+        const name = document.getElementById('studentName').value.trim();
+        const list = type === 'pokemon' ? pokemon : princesses;
+        const pick = list[Math.floor(Math.random() * list.length)];
+        document.getElementById('greeting').textContent = `Oh hello there ${name}!`;
+        document.getElementById('charImage').src = pick.image;
+        document.getElementById('charImage').alt = pick.name;
+        document.getElementById('compliment').textContent = pick.compliment;
+        document.getElementById('resultCard').style.display = 'block';
+      }
+    </script>
   </div>
-
-  <div id="resultCard" style="display:none;">
-    <p id="greeting"></p>
-    <p id="charName"></p>
-    <img id="charImage" src="" alt="" style="width:200px;" />
-    <p id="compliment"></p>
-  </div>
-
-  <script>
-    const pokemon = [
-      { name: "Pikachu",    image: "assets/pokemon/pikachu.png",    compliment: "You're shockingly awesome — just like Pikachu's Thunderbolt" },
-      { name: "Eevee",      image: "assets/pokemon/eevee.png",      compliment: "Eevee can evolve into 8 different Pokemon and just like Eevee, you can be anything you want to be!" },
-      { name: "Jigglypuff", image: "assets/pokemon/jigglypuff.png", compliment: "Just like Jigglypuff, you have a song in your heart that makes everything more magical" },
-      { name: "Bulbasaur",  image: "assets/pokemon/bulbasaur.png",  compliment: "Just like Bulbasaur soaks up sunshine to grow, you soak up everything you learn and get more amazing every day" },
-      { name: "Charmander", image: "assets/pokemon/charmander.png", compliment: "Just like Charmander's tail flame, your spark is always burning bright and nothing can ever put it out!" },
-      { name: "Squirtle",   image: "assets/pokemon/squirtle.png",   compliment: "Just like Squirtle blasts away every obstacle with its water cannon, you tackle every challenge that comes your way with everything you've got!" },
-      { name: "Mewtwo",     image: "assets/pokemon/mewtwo.png",     compliment: "Mewtwo has a power inside that nobody fully understands yet — and you have that same extraordinary gift just waiting to be discovered!" },
-      { name: "Snorlax",    image: "assets/pokemon/snorlax.png",    compliment: "Just like Snorlax, you might look relaxed and easygoing but everyone knows when it's your time you are absolutely unstoppable!" },
-    ];
-
-    const princesses = [
-      { name: "Moana",      image: "assets/princesses/moana.png",      compliment: "Moana never stopped believing in herself even when everyone around her said she couldn't — and that same unstoppable belief lives in you!" },
-      { name: "Mulan",      image: "assets/princesses/mulan.png",      compliment: "Mulan didn't just save the day, she did it by being completely and unapologetically herself — and that's exactly your superpower too!" },
-      { name: "Tiana",      image: "assets/princesses/tiana.png",      compliment: "Just like Tiana, you have a gift that is so special and so uniquely yours that the whole world can't wait to see what you cook up next!" },
-      { name: "Rapunzel",   image: "assets/princesses/rapunzel.png",   compliment: "Rapunzel spent years dreaming about the world and the moment she stepped into it she was absolutely unstoppable — and that same curiosity and wonder lives in you!" },
-      { name: "Merida",     image: "assets/princesses/merida.png",     compliment: "Merida could hit a bullseye from a mile away because she never stopped practicing — and just like Merida, your determination is your greatest superpower!" },
-      { name: "Cinderella", image: "assets/princesses/cinderella.png", compliment: "Cinderella never stopped being kind even when things were tough — and that same beautiful generous heart is exactly what makes you so extraordinary!" },
-      { name: "Ariel",      image: "assets/princesses/ariel.png",      compliment: "Ariel collected treasures everywhere she went because she saw the magic in everything — and you have that same incredible gift of wonder!" },
-      { name: "Belle",       image: "assets/princesses/belle.png",     compliment: "Just like Belle, you have a curiosity and a love of stories that will take you to places more magical than you could ever imagine!" },
-    ];
-
-    function handleSubmit() {
-      const name = document.getElementById('studentName').value.trim();
-      if (!name) { alert('Please enter your name first!'); return; }
-      document.getElementById('choiceSection').style.display = 'block';
-      document.getElementById('resultCard').style.display = 'none';
-    }
-
-    function handleClear() {
-      document.getElementById('studentName').value = '';
-      document.getElementById('choiceSection').style.display = 'none';
-      document.getElementById('resultCard').style.display = 'none';
-    }
-
-    function pickRandom(type) {
-      const name = document.getElementById('studentName').value.trim();
-      const list = type === 'pokemon' ? pokemon : princesses;
-      const pick = list[Math.floor(Math.random() * list.length)];
-      document.getElementById('greeting').textContent = `Oh hello there ${name}!`;
-      document.getElementById('charImage').src = pick.image;
-      document.getElementById('charImage').alt = pick.name;
-      document.getElementById('compliment').textContent = pick.compliment;
-      document.getElementById('resultCard').style.display = 'block';
-    }
-  </script>
 </body>
 </html>
